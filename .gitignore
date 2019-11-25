@@ -1,4 +1,5 @@
 start.sh
-virtual /
-.vscode /
+virtualenv/
+.vscode/
 *pyc
+__pycache__/ 
