@@ -1,56 +1,43 @@
-{% macro display(category_list) %}
-<div class="row">
-  {% if category_list %}
-  {% for category in category_list %}
-  <div class="col-md-6">
-    <div class="thumbnail text-center">
-      <h5 class="card-header">{{category.title}}</h5>
-      <h5 class="card-header">{{category.category}}</h5>
-      <div class="card-body">
-        <blockquote class="blockquote mb-0">
-          <h2>{{category.description}}</h2>
-          <footer class="blockquote-footer"> Posted by {{category.user.username}}</footer>
-        </blockquote>
+{% macro displayPitches(pitches_list) %}
 
-        <a href="{{url_for('main.new_comment',pitch_id = category.id)}}" class="btn btn-info"> Add a comment</a>
-        <a href="{{url_for('main.upvote',pitch_id = category.id)}}" class="btn btn-primary btn-sm"><i></i>Upvote
-          <span>{{category.upvotes.count()}}</span></a>
-        <a href="{{url_for('main.downvote',pitch_id = category.id)}}" class="btn btn-danger btn-sm"><i
-            class="far fa-thumbs-up"></i>Downvote <span>{{category.downvotes.count()}}</span></a>
-
-
-      </div>
-    </div>
-
-  </div>
-  {% endfor %}
-  {% else %}
-  {% endif %}
+{% for pitch in pitches_list %}
+<div class="panel style=" style="box-shadow: 5px 5px 5px 5px #f2f2f2; padding:10px; text-align:center;">
+  <p>{{pitch.pitch}}</p>
+  <br>
+  <a href="{{url_for('main.new_comment',id=pitch.id)}}">Add a Comment</a>&nbsp;&nbsp;|
+  <a href="{{url_for('main.view_comments',id=pitch.id)}}">View Comments</a>&nbsp;&nbsp;|
+  <a href="{{url_for('main.new_comment',id=pitch.id)}}">Vote</a>
 </div>
+{% endfor %}
+
 {% endmacro %}
 
+<!-- Displaying comments macro -->
+{% macro displayComments(list_of_comments) %}
+{% for comment in list_of_comments  %}
+<div class="row">
 
-
-{% macro displayComment(comments) %}
-<ul>
-
-  {% if comments %}
-  {% for comment in comments %}
-  <div class="row text-center">
-    <a>
-      <p style="color: brown">{{ comment.description }}</p>
-    </a>
-    <small> posted by {{comment.user.username}}</small>
+  <div class="col-xs-2 col-sm-2 col-md-4 col-lg-4">
+    <h4>Author</h4>
+    <p>{{comment.user.username}}</p>
   </div>
-  {% endfor %}
-  {% else %}
+  <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
+    <h2> <a href="{{url_for('main.single_comment',id=comment.id)}}">{{comment.pitch_title}}</a> </h2>
+  </div>
+</div>
 
-  <h3>This post does not does not have any comments yet !</h3>
-  {%endif%}
-
-</ul>
-
-
-
-
+{% endfor %}
 {% endmacro %}
+
+{% macro displayPitchesInCategories(pitches,id)%}
+{% for pitch in pitches %}
+{% if pitch.category_id==id%}
+<div class="panel style=" style="box-shadow: 5px 5px 5px 5px #f2f2f2; padding:10px;">
+  <p>{{pitch.pitch}}</p>
+  <a href="{{url_for('main.new_comment',id=pitch.id)}}">Add a Comment</a>&nbsp;&nbsp;|
+  <a href="{{url_for('main.view_comments',id=pitch.id)}}">View Comments</a>&nbsp;&nbsp;|
+  <a href="{{url_for('main.new_comment',id=pitch.id)}}">Vote</a>
+</div>
+{% endif%}
+{% endfor %}
+{% endmacro%}
