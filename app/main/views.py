@@ -16,14 +16,8 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    pitch = Pitch.query.filter_by().first()
-    title = 'Home'
-    pickuplines = Pitch.query.filter_by(category="pickuplines")
-    interviewpitch = Pitch.query.filter_by(category="interviewpitch")
-    promotionpitch = Pitch.query.filter_by(category="promotionpitch")
-    productpitch = Pitch.query.filter_by(category="productpitch")
-
-    return render_template('index.html', title=title, pitch=pitch, pickuplines=pickuplines, interviewpitch=interviewpitch, promotionpitch=promotionpitch, productpitch=productpitch)
+    
+    return render_template('index.html')
 
 
 @main.route('/pitches/new/', methods=['GET', 'POST'])
