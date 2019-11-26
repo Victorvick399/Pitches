@@ -113,7 +113,7 @@ def upvote(pitch_id):
 
     new_upvote = Upvote(pitch_id=pitch_id, user=current_user)
     new_upvote.save_upvotes()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.pitches'))
 
 
 @main.route('/pitch/downvote/<int:pitch_id>/downvote', methods=['GET', 'POST'])
@@ -128,4 +128,4 @@ def downvote(pitch_id):
 
     new_downvote = Downvote(pitch_id=pitch_id, user=current_user)
     new_downvote.save_downvotes()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.pitches'))
