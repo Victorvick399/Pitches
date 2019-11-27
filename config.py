@@ -14,7 +14,7 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
-    SUBJECT_PREFIX = 'One Minute Pitch'
+    SUBJECT_PREFIX = 'The Pitch'
     SENDER_EMAIL = 'victorvick399@gmail.com'
 
     # simple mde  configurations
@@ -22,7 +22,7 @@ class Config:
     SIMPLEMDE_USE_CDN = True
 
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://vincent:Empharse333@localhost/pitch_test'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://victor:12345@localhost/pitch_test'
 
 
 class ProdConfig(Config):
