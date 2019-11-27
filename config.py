@@ -5,7 +5,7 @@ class Config:
     General configuration parent class
     '''
     SECRET_KEY = 'vexus'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://victor:12345@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://victor:12345@localhost/thepitch1'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
 
     #  email configurations
