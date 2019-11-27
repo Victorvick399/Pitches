@@ -22,6 +22,7 @@
         <li><a href="{{url_for('auth.logout')}}" style="color:black; font-weight:bolder;">Sign out</a></li>
         {% else %}
         <li><a href="{{url_for('auth.login')}}" style="color:black; font-weight:bolder;">Log in</a></li>
+        <li><a href="{{url_for('auth.register')}}" style="color:black; font-weight:bolder;">Sign up</a></li>
         {%endif%}
       </ul>
     </div>
